@@ -1,8 +1,9 @@
-import { createStore } from 'redux';
-import { reducer } from '../reducers/city';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reducers from '../reducers';
+import thunk from 'redux-thunk';
 
 const initialState = {
-    city: 'Santiago,cl'
+    city: null
 };
 
-export const store = createStore(reducer, initialState);
+export const store = createStore(reducers, initialState, compose(applyMiddleware(thunk)));

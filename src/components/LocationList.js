@@ -6,25 +6,26 @@ import './styles.css';
 
 
 const LocationList = ({ cities, onSelectedLocation }) => {
-    const handleWeatherLocationClick = city => {
-        onSelectedLocation(city);
-    }
-    const strToComponents = cities => (
-        cities.map( (city) =>
-            <WeatherLocation 
-                key={city} 
-                city={city}
-                onWeatherLocationClick={() => handleWeatherLocationClick(city)} 
-                />)
-    );
-    return (<div className="locationList">
-        {strToComponents(cities)}
-    </div>);
-}
+        const handleWeatherLocationClick = city => {
+            onSelectedLocation(city);
+        }
+        const strToComponents = cities => (
+                cities.map((city) =>
+                    <
+                    WeatherLocation key = { city.name }
+                    city = { city.key }
+                    onWeatherLocationClick = {
+                        () => handleWeatherLocationClick(city.name) }
+                    data = { city.data }
+                    />)
+                );
+                return ( < div className = "locationList" > { strToComponents(cities) } <
+                    /div>);
+                }
 
-LocationList.propTypes = {
-    cities: PropTypes.array.isRequired,
-    onSelectedLocation: PropTypes.func,
-};
+                LocationList.propTypes = {
+                    cities: PropTypes.array.isRequired,
+                    onSelectedLocation: PropTypes.func,
+                };
 
-export default LocationList;
+                export default LocationList;
